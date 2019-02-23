@@ -1,0 +1,61 @@
+calculator class
+--------------------
+public class calculator
+{
+public int add(3,4);
+return a+b;
+}
+
+calculatorinterface class
+----------------------------
+public interface calcInterface
+{
+	int add(int a, int b);
+}
+
+calculatorTest class 
+----------------------
+@Test
+public void add()
+{
+	calculatorinterface  c = new CalculatorInterfaceImplementation();
+	int result = calculatorinterface .add(4,5);
+	Assert.assertequal(9,result);	//First number expected, second number actual
+}
+
+calculatorTest class - using Spring framework
+----------------------
+@Test
+public void Testone()
+{
+	//Precondition
+	ApplicationContext alias = AnnotationConfigApplicationContext(anyclass.class);
+	calculatorinterface calculatorinterface = (calculatorinterface) applicationcontext.getBean("Typical");
+
+	int result = CalculatorInterface.add(4,3);
+	Assert.assertequal(9,result);	//First number expected, second number actual
+}
+
+CalculatorInterfaceImplementation
+-----------------------------------
+public class CalculatorInterfaceImplementation implements calculatorinterface 
+{
+	public int add(int a, int b);
+	return Integer.parseInt(String.valueof(a) + String.valueof(b));
+}
+
+Spring Framework - Use Spring framework to assist with unit testing.
+https://mvnrepository.com/artifact/org.springframework/spring-context/5.1.5.RELEASE
+Create class
+
+@configuration //Type control & spacebar after packages have downloaded. This class is now a configuration class
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+public class anyclass
+{
+	@Bean(name="Typical");	//Name than can be given out to clients which will not affect application when method name changes
+	public calculatorInterface getService()
+	{
+		return new CalculatorInterfaceImplementation();	//No need to create CalculatorInterfaceImplementation. Just call the getService() method.
+	}
+}
